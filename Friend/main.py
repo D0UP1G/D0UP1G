@@ -1,8 +1,10 @@
 import json, pyaudio
 from vosk import Model, KaldiRecognizer
 import os
-import teleBot
+from aiogram import Bot, Dispatcher,executor, types
 import tokens
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 
 model = Model(r'model')
 rec = KaldiRecognizer(model, 16000)
@@ -23,6 +25,9 @@ def listen():
 print('GOOD')
 
 for text in listen():
-    print(text)
+    print("Распознано: " + text)
+    str(text)
+    if fuzz.ratio(text, 'привет') >= 70:
+        print("привет1")
 
 
