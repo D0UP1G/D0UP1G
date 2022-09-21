@@ -1,10 +1,13 @@
 import json, pyaudio
+import webbrowser
+
 from vosk import Model, KaldiRecognizer
 import os
 from aiogram import Bot, Dispatcher,executor, types
 import tokens
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
+import search
 
 model = Model(r'model')
 rec = KaldiRecognizer(model, 16000)
@@ -29,5 +32,9 @@ for text in listen():
     str(text)
     if fuzz.ratio(text, 'привет') >= 70:
         print("привет1")
+    else:
+        if fuzz.ratio(text, 'открыть гугл') >= 70:
+            res = search.search()
+            print(res)
 
 
