@@ -33,8 +33,14 @@ for text in listen():
     if fuzz.ratio(text, 'привет') >= 70:
         print("привет1")
     else:
-        if fuzz.ratio(text, 'открыть гугл') >= 70:
-            res = search.search()
+        if fuzz.ratio(text, 'открыть гугл') >= 80:
+            res = search.google()
+            print(res)
+        if fuzz.ratio(text, 'открыть яндекс') >= 80:
+            res = search.yandex()
+        if fuzz.ratio(text, 'запустить') >= 0:
+            print(fuzz.ratio(text, 'запустить'))
+            res = search.OBS()
             print(res)
 
 
