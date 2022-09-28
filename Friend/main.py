@@ -9,6 +9,7 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import search
 
+
 model = Model(r'model')
 rec = KaldiRecognizer(model, 16000)
 p = pyaudio.PyAudio()
@@ -38,9 +39,16 @@ for text in listen():
             print(res)
         if fuzz.ratio(text, 'открыть яндекс') >= 80:
             res = search.yandex()
-        if fuzz.ratio(text, 'запустить') >= 0:
-            print(fuzz.ratio(text, 'запустить'))
+        if fuzz.ratio(text, 'открыть') >= 80:
+            print(fuzz.ratio(text, 'открыть'))
             res = search.OBS()
             print(res)
+        if fuzz.ratio(text, 'запустить яндекс') >= 80:
+            res = search.start_yandex()
+        if fuzz.ratio(text, 'начать спам') >= 80:
+            a = 1
+            while True:
+
+                print(a+1)
 
 
